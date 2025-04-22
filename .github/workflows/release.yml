@@ -27,9 +27,6 @@ jobs:
       - name: Build extension
         run: npm run build
 
-      - name: Package ZIP for release
-        run: cd dist && zip -r ../twitch-user-notes.zip *
-
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

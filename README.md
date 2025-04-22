@@ -16,11 +16,14 @@ Because your Twitch follows list is full of mystery streamers and raid memories.
 ## 🚀 Install
 
 Coming soon to the Chrome Web Store.  
+
 In the meantime:
 
-1. Clone or download this repo  
+1. Grab the zip from the latest release, unzip somewhere.
 2. Go to `chrome://extensions` and enable "Developer mode"  
-3. Click "Load unpacked" and select the `/dist` folder  
+3. Click "Load unpacked" and select the folder you unzipped
+
+Alternatively, if you're a dev: clone the repo, build it and load umpacked from the dist folder.
 
 ## 🛠️ For Developers
 
@@ -29,12 +32,14 @@ This project is written in **TypeScript**, uses **Vitest** for unit testing, and
 ### Scripts
 
 ```bash
-npm install       # install deps
-npm run dev       # dev build with hot reload
-npm run build     # production build to dist/
-npm run lint      # lint check
-npm run test      # run unit tests
-npm run coverage  # check test coverage
+npm install            # install deps
+npm run dev            # dev build with hot reload
+npm run build          # production build to dist/
+npm run lint           # lint check
+npm run lint:fix       # lint + fix
+npm run test           # run unit tests
+npm run test:coverage  # check test coverage
+npm run commit         # alias for npx cz commit (Commitzen prompt for good commit messages)
 ```
 
 ## 📂 Project Structure
@@ -45,6 +50,7 @@ src/
 ├── content/          # Tooltip injection into Twitch pages
 ├── options/          # Options/settings page logic
 ├── popup/            # Popup with link to options
+├── scripts/          # Build scripts like setting manifest and package version
 ├── storage.ts        # Storage abstraction (Chrome/local)
 ├── types/            # Type definitions
 ├── __tests__/        # Unit tests
