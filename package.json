@@ -1,6 +1,6 @@
 {
   "name": "twitch-user-notes",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "description": "A friendly Chrome extension for saving personal notes about Twitch users.",
   "type": "module",
   "scripts": {
