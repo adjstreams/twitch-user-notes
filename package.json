@@ -1,8 +1,7 @@
 {
   "name": "twitch-user-notes",
   "version": "0.1.0",
-  "description": "A Chrome extension to save personal notes about Twitch users.",
-  "main": "index.js",
+  "description": "A friendly Chrome extension for saving personal notes about Twitch users.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,7 +14,23 @@
     "test:coverage": "vitest run --coverage"
   },
   "author": "ADJStreams",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adjstreams/twitch-user-notes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adjstreams/twitch-user-notes/issues"
+  },
+  "homepage": "https://github.com/adjstreams/twitch-user-notes#readme",
+  "keywords": [
+    "chrome-extension",
+    "twitch",
+    "notes",
+    "userscripts",
+    "streaming",
+    "productivity"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
