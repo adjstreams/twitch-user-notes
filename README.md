@@ -58,4 +58,4 @@ Built with ❤️ by [ADJ](https://adj.gg), also known as
 
 This is one of many small tools created by the same dev behind [streamgood.gg](https://streamgood.gg) — a Twitch toolkit for streamers who want a little more magic.
 
-Got feedback, ideas, or need help? Open an issue or [drop by the GitHub repo](#).
+Got feedback, ideas, or need help? [Open an issue](https://github.com/adjstreams/twitch-user-notes/issues).
