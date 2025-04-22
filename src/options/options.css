@@ -1,0 +1,71 @@
+body {
+    font-family: system-ui, sans-serif;
+    margin: 1em;
+  }
+  
+  h1 {
+    font-size: 1.4rem;
+  }
+  
+  button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  
+  button.icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  button.icon:hover {
+    opacity: 0.7;
+  }
+  
+  .storage-info {
+    margin: 1em 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left: 5px solid #007acc;
+    background: #f0f8ff;
+    font-size: 14px;
+    max-width: 500px;
+  }
+  .storage-info.warning {
+    border-left-color: #e09100;
+    background: #fffbe5;
+  }
+  .storage-info.danger {
+    border-left-color: #d00000;
+    background: #ffe5e5;
+  }
+  
+  fieldset.actions {
+    margin-top: 1em;
+    padding: 1em;
+    border: 1px solid #ccc;
+  }
+  .button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    vertical-align: top;
+  }
+  th {
+    background-color: #f9f9f9;
+    text-align: left;
+  }
+  

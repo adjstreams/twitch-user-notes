@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Twitch User Notes</title>
+  <link rel="stylesheet" href="./options.css" />
+</head>
+<body>
+  <h1>Twitch User Notes</h1>
+
+  <div id="storage-usage" class="storage-info">
+    <!-- Usage info will be inserted here -->
+  </div>
+
+  <fieldset class="actions">
+    <legend>Manage Notes</legend>
+    <div class="button-group">
+      <button id="export" title="Export your notes as a .json file for backup or sharing">Export JSON</button>
+      <button id="import" title="Import notes from a .json file">Import JSON</button>
+      <input type="checkbox" id="replace" title="If checked, existing notes will be replaced.">
+      <label for="replace" title="If checked, existing notes will be replaced.">Replace existing notes</label>
+      <button id="clear" title="Clear all notes from local storage">Clear Notes</button>
+      <input type="file" id="import-file" accept=".json" style="display:none">
+    </div>
+  </fieldset>
+
+  <table id="notes">
+    <thead>
+      <tr><th>User</th><th>Note</th><th>Updated</th><th></th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script type="module" src="./options.ts"></script>
+</body>
+</html>
