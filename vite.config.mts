@@ -21,12 +21,15 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    exclude: [
+      '__tests__/e2e/**', // 👈 exclude E2E test folder from Vitest
+    ],    
     coverage: {
       all: true,
-      reporter: ['text', 'html'],
+      reporter: ['text', 'html', 'lcov'],
       reportsDirectory: '../coverage',
       include: ['**/*.{ts,tsx}'],
-      exclude: ['types/**', '__tests__/**', '**/*.test.ts']
+      exclude: ['types/**', '__tests__/**', '**/*.spec.ts']
     }    
   },
   build: {

@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "e2e": "playwright test",
     "commit": "cz"
   },
   "author": "ADJStreams",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
+    "@playwright/test": "^1.52.0",
     "@semantic-release/exec": "^7.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^11.0.1",
@@ -51,6 +53,7 @@
     "eslint-plugin-prettier": "^5.2.6",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
+    "playwright": "^1.52.0",
     "prettier": "^3.5.3",
     "semantic-release": "^24.2.3",
     "typescript": "^5.8.3",

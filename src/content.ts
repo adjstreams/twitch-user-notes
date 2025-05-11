@@ -1,4 +1,5 @@
 import type { NotesMap } from "./types";
+import { USERNAME_SELECTORS } from "./selectors";
 import { extractLogin, showTooltip, hideTooltip } from "./content/utils";
 
 /* ───── guard for embedded frames without extension APIs ───── */
@@ -69,12 +70,7 @@ document.addEventListener("contextmenu", (e) => {
 function hookUsernameEl(node: HTMLElement): void {
   if (!(node instanceof HTMLElement)) return;
 
-  const selectors = [
-    '[data-a-target="chat-message-username"]', // chat
-    'a[data-test-selector="followed-channel"]', // left sidebar
-    'a[data-a-target="preview-card-channel-link"]', // browse cards
-  ];
-  const joined = selectors.join(",");
+  const joined = USERNAME_SELECTORS.join(",");
 
   const candidates = node.matches?.(joined)
     ? [node]

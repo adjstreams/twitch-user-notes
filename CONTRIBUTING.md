@@ -26,6 +26,7 @@ Whether you're here to report a bug, suggest a feature, or submit a pull request
    ```bash
    npm run lint
    npm run test
+   npm run e2e
    ```
 
 4. **Build the extension**
