@@ -9,9 +9,12 @@ const EXTENSION_PATH = path.join(__dirname, "../../../dist");
 test.describe("Twitch User Notes Extension", () => {
   let context: BrowserContext;
 
+  const isCI = process.env.CI === "true";
+
+
   test.beforeAll(async () => {
     context = await chromium.launchPersistentContext("", {
-      headless: false,
+      headless: isCI,
       args: [
         `--disable-extensions-except=${EXTENSION_PATH}`,
         `--load-extension=${EXTENSION_PATH}`,
@@ -20,7 +23,9 @@ test.describe("Twitch User Notes Extension", () => {
   });
 
   test.afterAll(async () => {
-    await context.close();
+    if (context) {
+      await context.close();
+    }
   });
 
   test("should load Twitch and inject content script", async () => {

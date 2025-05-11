@@ -1,8 +1,9 @@
 # 📝 Twitch User Notes
 
-[![Unit Tests](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml)
+[![Unit Tests](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-test.yml/badge.svg?branch=test-ci-workflows)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml)
 [![E2E Tests](https://github.com/adjstreams/twitch-user-notes/actions/workflows/e2e.yml/badge.svg)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/e2e.yml)
-[![Coverage](https://codecov.io/gh/adjstreams/twitch-user-notes/branch/main/graph/badge.svg)](https://codecov.io/gh/adjstreams/twitch-user-notes)
+[![Coverage](https://codecov.io/gh/adjstreams/twitch-user-notes/branch/test-ci-workflows/graph/badge.svg)](https://codecov.io/gh/adjstreams/twitch-user-notes/tree/test-ci-workflows)
+
 [![Lint](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml)
 [![License](https://img.shields.io/github/license/adjstreams/twitch-user-notes.svg)](./LICENSE)
 
