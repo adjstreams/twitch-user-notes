@@ -2,9 +2,6 @@ name: Smoketest Twitch Selectors
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - test-ci-workflows  # <-- your current branch    
   # Uncomment after validation
   # schedule:
   #   - cron: '0 6 * * *'  # Every day at 6 AM UTC
