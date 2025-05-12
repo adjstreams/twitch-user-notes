@@ -14,6 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Download previous smoketest baseline
+        uses: actions/download-artifact@v4
+        with:
+            name: smoketest-baseline
+            path: .github/smoketest
+        continue-on-error: true        
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -26,7 +33,14 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Selector Smoketest
-        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' node .github/smoketest/selector-check.js
+        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' npm run smoketest
+
+      - name: Upload smoketest results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+            name: smoketest-baseline
+            path: .github/smoketest/last-smoketest.json
 
       - name: Create GitHub Issue on Selector Drop
         if: failure()
@@ -35,3 +49,4 @@ jobs:
           title: Twitch DOM Change Detected
           content-filepath: .github/smoketest/alert.md
           labels: bug, smoketest
+

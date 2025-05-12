@@ -2,3 +2,7 @@ node_modules
 coverage
 dist
 test-results
+
+.github/smoketest/last-smoketest.json
+.github/smoketest/alert.md
+
