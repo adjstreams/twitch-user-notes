@@ -67,13 +67,17 @@ const __dirname = dirname(__filename);
 
     const outputPath = path.resolve(__dirname, "last-smoketest.json");
 
+    let previous = {};
     if (!fs.existsSync(outputPath)) {
-      console.log("🟡 No baseline found. Writing initial result and exiting.");
+      console.log(
+        "🟡 No local baseline found. Writing initial result and exiting.",
+      );
       fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
       process.exit(0);
     }
 
-    const previous = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
+    previous = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
+
     const deltas = { homepage: {}, chat: {} };
     let failure = false;
 
