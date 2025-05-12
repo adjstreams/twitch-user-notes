@@ -68,15 +68,23 @@ const __dirname = dirname(__filename);
     const outputPath = path.resolve(__dirname, "last-smoketest.json");
 
     let previous = {};
-    if (!fs.existsSync(outputPath)) {
+    try {
+      const rawBaseline = fs.readFileSync(outputPath, "utf-8");
+      previous = JSON.parse(rawBaseline);
+    } catch (err) {
+      console.warn(
+        "⚠️ Failed to read or parse previous baseline. Assuming empty. error:",
+        err,
+      );
+    }
+
+    if (Object.keys(previous).length === 0) {
       console.log(
-        "🟡 No local baseline found. Writing initial result and exiting.",
+        "🟡 First run or empty baseline. Saving current result and exiting without alert.",
       );
       fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
       process.exit(0);
     }
-
-    previous = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
 
     const deltas = { homepage: {}, chat: {} };
     let failure = false;
