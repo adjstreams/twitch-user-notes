@@ -1,1 +1,18 @@
-{}
+{
+  "homepage": {
+    "[data-a-target=\"chat-message-username\"]": false,
+    "a[data-a-target=\"preview-card-channel-link\"]": true,
+    "a[data-test-selector=\"followed-channel\"]": false,
+    "a[data-test-selector=\"recommended-channel\"]": true,
+    "[data-a-target=\"side-nav-title\"]": true,
+    "a.side-nav-card.tw-link": true
+  },
+  "chat": {
+    "[data-a-target=\"chat-message-username\"]": false,
+    "a[data-a-target=\"preview-card-channel-link\"]": false,
+    "a[data-test-selector=\"followed-channel\"]": false,
+    "a[data-test-selector=\"recommended-channel\"]": false,
+    "[data-a-target=\"side-nav-title\"]": false,
+    "a.side-nav-card.tw-link": true
+  }
+}
