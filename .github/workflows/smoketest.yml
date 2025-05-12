@@ -13,11 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Debug download response headers
+        run: |
+            echo "Checking if baseline JSON is reachable..."
+            curl -I https://raw.githubusercontent.com/adjstreams/twitch-user-notes/baselines/last-smoketest.json || echo "Header fetch failed"
+
       - name: Download baseline from baselines branch
         run: |
-          curl -sSf -o .github/smoketest/last-smoketest.json \
-            https://raw.githubusercontent.com/adjstreams/twitch-user-notes/baselines/last-smoketest.json || echo "{}" > .github/smoketest/last-smoketest.json
-
+          curl -s -o .github/smoketest/last-smoketest.json \
+            https://raw.githubusercontent.com/adjstreams/twitch-user-notes/baselines/last-smoketest.json || \
+            echo "{}" > .github/smoketest/last-smoketest.json
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
