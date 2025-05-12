@@ -8,7 +8,7 @@
     "a.side-nav-card.tw-link": true
   },
   "chat": {
-    "[data-a-target=\"chat-message-username\"]": false,
+    "[data-a-target=\"chat-message-username\"]": true,
     "a[data-a-target=\"preview-card-channel-link\"]": false,
     "a[data-test-selector=\"followed-channel\"]": false,
     "a[data-test-selector=\"recommended-channel\"]": false,
