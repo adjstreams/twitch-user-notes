@@ -1,3 +1,8 @@
+---
+nav_order: 3
+title: Tech Stack
+---
+
 # Technology Stack
 
 This project keeps dependencies minimal but modern. Every tool has a single clear job.

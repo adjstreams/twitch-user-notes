@@ -1,27 +1,36 @@
+---
+nav_order: 2
+title: Architecture
+---
+
 # Architecture
 
-## Layer overview
+## Layer Overview
 
-| Layer | File(s) | Responsibility |
-|-------|---------|----------------|
-| **Service Worker** (MV3 background) | `src/background` | Registers context‑menu, listens for `PROMPT_NOTE`, syncs storage. Stateless; Chrome terminates it after ≈ 30 s idle. |
-| **Content Script** | `src/content` | Injected on every `twitch.tv` page. Observes DOM mutations, tags username nodes, shows hover tooltips, exchanges messages with the background. |
-| **Shared Utils** | `src/content/utils`, `src/storage.ts`, `src/selectors.ts` | Pure helpers — extract login, render tooltip, canonical selector list, storage wrapper. |
-| **Popup / Options UI** | `src/popup`, `src/options` | Vite‑built Vue 3 UIs for quick settings and JSON import/export. Loaded on demand; no Twitch perms. |
-| **Build & Tooling** | `vite.config.ts`, `scripts/**` | Vite + esbuild for TS→JS, manifest bump, semantic‑release, husky hooks. |
+| Layer                      | File(s)                              | Responsibility                                                                 |
+|---------------------------|--------------------------------------|--------------------------------------------------------------------------------|
+| **Service Worker**        | `src/background`                     | Registers the context menu, handles `PROMPT_NOTE` messages, syncs storage. Stateless by design (MV3 kills idle workers). |
+| **Content Script**        | `src/content`                        | Injected into all `twitch.tv` pages. Observes DOM mutations, tags usernames, displays tooltips, and communicates with background. |
+| **Shared Utilities**      | `src/content/utils`, `src/selectors.ts`, `src/storage.ts` | Pure functions for login extraction, tooltip rendering, selector listing, and storage access. |
+| **Popup / Options UI**    | `src/popup`, `src/options`           | Built with Vite. Vue 3 UIs for settings and JSON import/export. Only loads on UI demand — no Twitch permissions needed. |
+| **Build & Tooling**       | `vite.config.ts`, `scripts/`, `.github/` | Handles TS → JS via Vite, manifest bumping, lint/test hooks, semantic-release, CI, etc. |
 
-## Data flow
+---
 
-1. **Right‑click username** → content script dispatches `CTX_TARGET` with the login.  
-2. **Background** receives, builds context‑menu → Chrome shows **Add / Edit note**.  
-3. **User click** triggers `PROMPT_NOTE` back to the content script → native `prompt()` appears.  
-4. **User submits note** → content script writes to `chrome.storage.local`.  
-5. **Any page** showing that username reads the cache and displays a tooltip on hover.
+## Data Flow (Right-Click UX)
 
-## Permissions
+1. **Right-click on username** → content script sends `CTX_TARGET` with the login.
+2. **Background** listens and sets up a context menu for “Add/Edit Note”.
+3. **User clicks** the item → background sends `PROMPT_NOTE` back to the content script.
+4. **Content script** prompts user via native `prompt()` → stores note in `chrome.storage.local`.
+5. **Any page** showing that username then renders the tooltip based on local cache.
 
-| Permission | Why it’s needed |
-|------------|-----------------|
-| `storage` | Persist notes locally. |
-| `contextMenus` | Inject right‑click menu item. |
-| Host `https://www.twitch.tv/*` | Limit content‑script injection to Twitch pages. |
+---
+
+## Chrome Extension Permissions
+
+| Permission                  | Purpose                                  |
+|----------------------------|------------------------------------------|
+| `storage`                  | Used to persist user notes locally.      |
+| `contextMenus`             | Enables right-click "Add/Edit Note".     |
+| `https://www.twitch.tv/*`  | Limits content script to Twitch pages.   |

@@ -1,13 +1,38 @@
-# Testing & Limitations
+---
+nav_order: 4
+title: Testing
+---
 
-| Layer | Framework | What we cover |
-|-------|-----------|---------------|
-| **Vitest + jsdom** | selectors snapshot, `extractLogin`, tooltip helpers |
-| **Playwright smoke** | extension injects and tags at least one username in pop-out chat |
-| **Nightly drift job** | headless Playwright checks that ≥ 1 selector still matches today’s twitch.tv |
+# Testing Strategy
 
-## Not automated (and why)
+This project takes a pragmatic approach to testing — fast, focused, and grounded in real-world behavior. Each layer is tested in the most reliable way possible given Chrome extension limitations.
 
-* **Native context menu UI** – Chrome's menus aren’t exposed to automation.
-* **`prompt()` dialog** – blocks headless browsers; logic unit-tested instead.
-* **MV3 worker lifetime** – service-worker dies after ~30 s idle; messaging paths covered in unit tests.
+---
+
+## What We Test
+
+| Layer                   | Framework          | Coverage Summary                                                                 |
+|------------------------|--------------------|----------------------------------------------------------------------------------|
+| **Pure utilities**     | Vitest + jsdom     | Snapshot tests for `selectors`, logic tests for `extractLogin`, tooltip rendering, etc. |
+| **Extension injection**| Playwright (E2E)    | Local test run (`npm run e2e`) launches a persistent Chrome context and confirms the extension injects, tags Twitch usernames, and behaves as expected. |
+| **DOM Integration**    | Playwright (smoke) | CI/CD check that verifies at least one username selector is still matching on Twitch pages. |
+| **Nightly Regression** | GitHub Actions + Playwright | Scheduled smoketest detects Twitch DOM drift (e.g., layout or selector changes). |
+
+---
+
+## What We Don’t Test (And Why)
+
+| Feature                        | Reason                                                                 |
+|-------------------------------|------------------------------------------------------------------------|
+| **Context menu UI**           | Native Chrome menus aren’t exposed to automation frameworks like Playwright. |
+| **`prompt()` note editing**   | `prompt()` blocks execution in headless browsers; tested via isolated logic. |
+| **Service worker lifetime**   | MV3 background scripts are unloaded after ~30 seconds idle. Messaging logic is unit-tested instead of E2E tested.
+
+---
+
+## CI/CD Integration
+
+- **`npm test`**: Runs unit tests via Vitest on every commit and push
+- **`npm run e2e`**: Local-only Playwright test validates real extension behavior
+- **Smoketests**: Scheduled GitHub Action detects if Twitch selectors change unexpectedly
+- **Alerts**: Failing smoketests automatically open a GitHub issue with the affected selectors
