@@ -1,7 +1,7 @@
 # 📝 Twitch User Notes
 
-[![Unit Tests](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-test.yml/badge.svg?branch=test-ci-workflows)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml)
-[![Coverage](https://codecov.io/gh/adjstreams/twitch-user-notes/branch/test-ci-workflows/graph/badge.svg)](https://codecov.io/gh/adjstreams/twitch-user-notes/tree/test-ci-workflows)
+[![Unit Tests](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-test.yml/badge.svg?branch=main)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml)
+[![Coverage](https://codecov.io/gh/adjstreams/twitch-user-notes/branch/main/graph/badge.svg)](https://codecov.io/gh/adjstreams/twitch-user-notes/tree/main)
 [![License](https://img.shields.io/github/license/adjstreams/twitch-user-notes.svg)](./LICENSE)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/YOUR_EXTENSION_ID.svg)](https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID)
 
