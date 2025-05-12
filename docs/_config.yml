@@ -1,0 +1,17 @@
+title: Twitch User Notes
+logo: /assets/logo.png
+remote_theme: just-the-docs/just-the-docs
+color_scheme: dark
+
+# Optional: Uncomment to enable search
+# just_the_docs:
+#   search_enabled: true
+
+# Set the base path for GitHub Pages
+baseurl: "/twitch-user-notes"
+
+# Navigation order (if you want to use `nav_order` in frontmatter)
+# collections:
+#   docs:
+#     output: true
+#     permalink: /:path/
