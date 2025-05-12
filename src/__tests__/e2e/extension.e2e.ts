@@ -11,7 +11,6 @@ test.describe("Twitch User Notes Extension", () => {
 
   const isCI = process.env.CI === "true";
 
-
   test.beforeAll(async () => {
     context = await chromium.launchPersistentContext("", {
       headless: isCI,
