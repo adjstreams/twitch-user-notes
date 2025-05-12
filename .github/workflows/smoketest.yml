@@ -2,9 +2,8 @@ name: Smoketest Twitch Selectors
 
 on:
   workflow_dispatch:
-  # Uncomment after validation
-  # schedule:
-  #   - cron: '0 6 * * *'  # Every day at 6 AM UTC
+  schedule:
+    - cron: '0 6 * * *'  # Every day at 6 AM UTC
 
 jobs:
   smoketest:
@@ -14,12 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download previous smoketest baseline
-        uses: actions/download-artifact@v4
-        with:
-            name: smoketest-baseline
-            path: .github/smoketest
-        continue-on-error: true        
+      - name: Download baseline from baselines branch
+        run: |
+          curl -sSf -o .github/smoketest/last-smoketest.json \
+            https://raw.githubusercontent.com/adjstreams/twitch-user-notes/baselines/last-smoketest.json || echo "{}" > .github/smoketest/last-smoketest.json
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -35,12 +32,17 @@ jobs:
       - name: Run Selector Smoketest
         run: xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' npm run smoketest
 
-      - name: Upload smoketest results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-            name: smoketest-baseline
-            path: .github/smoketest/last-smoketest.json
+      - name: Upload new baseline to baselines branch
+        if: success()
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "noreply@github.com"
+          git fetch origin baselines || git checkout --orphan baselines
+          git switch baselines || git checkout -b baselines
+          cp .github/smoketest/last-smoketest.json .
+          git add last-smoketest.json
+          git commit -m "Update baseline from CI run" || echo "No changes to commit"
+          git push -f origin baselines
 
       - name: Create GitHub Issue on Selector Drop
         if: failure()
@@ -49,4 +51,3 @@ jobs:
           title: Twitch DOM Change Detected
           content-filepath: .github/smoketest/alert.md
           labels: bug, smoketest
-
