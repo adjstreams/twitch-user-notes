@@ -1,5 +1,5 @@
 import { describe, it, vi, expect, beforeEach, afterEach } from "vitest";
-import { MockChrome } from "./test-utils";
+import { MockChrome } from "../testUtils";
 
 // Minimal mock chrome types
 type MockContextMenuInfo = { menuItemId: string };
@@ -55,19 +55,19 @@ afterEach(() => {
   chrome.runtime!.lastError = undefined;
 });
 
-describe("background script", () => {
+describe("background.ts", () => {
   it("creates context menu if update fails", async () => {
     updateSpy.mockImplementationOnce((_id, _props, cb) => {
       chrome.runtime!.lastError = { message: "mock error" };
       cb?.();
     });
 
-    await import("../background");
+    await import("@src/background/background");
     expect(createSpy).toHaveBeenCalled();
   });
 
   it("sends PROMPT_NOTE when context menu clicked", async () => {
-    await import("../background");
+    await import("@src/background/background");
     onMessageCallback({ type: "CTX_TARGET", login: "bob" });
     onClickedCallback({ menuItemId: "tw-edit-note" }, { id: 42 });
 
@@ -78,7 +78,7 @@ describe("background script", () => {
   });
 
   it("hides context menu on CTX_CLEAR", async () => {
-    await import("../background");
+    await import("@src/background/background");
     onMessageCallback({ type: "CTX_CLEAR" });
 
     expect(updateSpy).toHaveBeenCalledWith(
@@ -89,7 +89,7 @@ describe("background script", () => {
   });
 
   it("shows context menu with login on CTX_TARGET", async () => {
-    await import("../background");
+    await import("@src/background/background");
     onMessageCallback({ type: "CTX_TARGET", login: "alice" });
 
     expect(updateSpy).toHaveBeenCalledWith(

@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
-import type { MockChrome } from "../test-utils";
-import { openOptionsAndClose } from "../../popup/logic";
+import type { MockChrome } from "../testUtils";
+import { openOptionsAndClose } from "@src/popup/openOptionsAndClose";
 
-describe("popup", () => {
+describe("popup logic", () => {
   it("calls openOptionsPage and closes the window", () => {
     const openOptionsPage = vi.fn();
     const close = vi.fn();

@@ -1,6 +1,6 @@
 # 📝 Twitch User Notes
 
-[![Unit Tests](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-test.yml/badge.svg?branch=main)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-tests.yml)
+[![Unit Tests](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-test.yml/badge.svg?branch=main)](https://github.com/adjstreams/twitch-user-notes/actions/workflows/unit-test.yml)
 [![Coverage](https://codecov.io/gh/adjstreams/twitch-user-notes/branch/main/graph/badge.svg)](https://codecov.io/gh/adjstreams/twitch-user-notes/tree/main)
 [![License](https://img.shields.io/github/license/adjstreams/twitch-user-notes.svg)](./LICENSE)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/YOUR_EXTENSION_ID.svg)](https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID)
@@ -68,7 +68,53 @@ MIT — see [LICENSE](./LICENSE) for details.
 
 ## 📸 Preview
 
-To be added
+### Options UI
+![Main UI](./screenshots/options.png)
+### Editing notes on Options screen
+![Edit Note](./screenshots/edit-in-options.png)
+
+### Hover over users for messages
+![Hover over users for messages](./screenshots/chat-highlight.png)
+
+### Add note to chat user
+![Add note to chat user](./screenshots/chat-add-note.png)
+
+### Edit note on Twitch
+![Edit note on Twitch](./screenshots/edit-note-on-twitch.png)
+
+---
+
+---
+
+## ❓ FAQ
+
+### Where are notes stored?
+
+Notes are saved in your browser using `chrome.storage.local`. They never leave your device unless you export them.
+
+---
+
+### Do notes sync between devices?
+
+Nope. If you use multiple browsers or PCs, you’ll need to export and import manually from the Options screen.
+
+---
+
+### I installed the extension, but don’t see anything?
+
+Make sure you’re logged into Twitch and refresh the tab. Then right click on usernames in chat or sidebars to add/edit a note. Your existing notes will show as tooltips.
+
+---
+
+### Can I back up my notes?
+
+Yes! Go to the Options page and use **Export Notes** to save a `.json` backup.
+
+---
+
+### Firefox version?
+
+Not yet. Want it? [Open an issue](https://github.com/adjstreams/twitch-user-notes/issues).
 
 ---
 
