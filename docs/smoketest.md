@@ -5,7 +5,7 @@ title: Selector Smoketest
 
 # Smoketest: Selector Drift Detection
 
-Twitch changes its UI often. This extension uses a nightly smoketest to detect when selectors break — before users complain.
+Twitch could change its UI. This extension uses a nightly smoketest to detect when selectors break — before users complain.
 
 ---
 

@@ -5,19 +5,38 @@ title: Architecture
 
 # Architecture
 
-## Layer Overview
+## Architecture Layers
 
-| Layer                      | File(s)                              | Responsibility                                                                 |
-|---------------------------|--------------------------------------|--------------------------------------------------------------------------------|
-| **Service Worker**        | `src/background`                     | Registers the context menu, handles `PROMPT_NOTE` messages, syncs storage. Stateless by design (MV3 kills idle workers). |
-| **Content Script**        | `src/content`                        | Injected into all `twitch.tv` pages. Observes DOM mutations, tags usernames, displays tooltips, and communicates with background. |
-| **Shared Utilities**      | `src/content/utils`, `src/selectors.ts`, `src/storage.ts` | Pure functions for login extraction, tooltip rendering, selector listing, and storage access. |
-| **Popup / Options UI**    | `src/popup`, `src/options`           | Built with Vite. Vue 3 UIs for settings and JSON import/export. Only loads on UI demand — no Twitch permissions needed. |
-| **Build & Tooling**       | `vite.config.ts`, `scripts/`, `.github/` | Handles TS → JS via Vite, manifest bumping, lint/test hooks, semantic-release, CI, etc. |
+This extension is split into distinct layers for clarity and separation of concerns:
+
+| Layer             | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **Service Worker** | Handles the context menu and background messaging (chrome.runtime.onMessage) between scripts.         |
+| **Content Script** | Injected into Twitch pages. Observes DOM, tags usernames, and renders tooltips. |
+| **Options UI**     | Displays and manages notes, including import/export and editing.       |
+| **Popup Script**   | Opens the options page from the Chrome extension menu.                     |
+| **Utilities**      | Shared logic for login detection, DOM interaction, storage, and rendering. |
 
 ---
 
-## Data Flow (Right-Click UX)
+## Project Structure
+
+| Folder            | Purpose                                                  |
+|-------------------|----------------------------------------------------------|
+| `src/background/` | Service worker logic for context menu                    |
+| `src/content/`    | DOM observers and Twitch injection logic                 |
+| `src/options/`    | Options page UI + note management logic                  |
+| `src/popup/`      | Simple popup to open options                             |
+| `public/`         | Manifest, icons, and static assets                       |
+| `scripts/`        | CI/CD helper scripts (e.g., version bump, zip builder)  |
+| `docs/`           | Dev and user-facing documentation                        |
+| `__tests__/`      | Vitest unit tests and Playwright E2E tests                              |
+
+---
+
+## Note-Taking Flow: Right-Click UX
+
+This is the typical flow for adding or editing a note from a Twitch chat or user element.
 
 1. **Right-click on username** → content script sends `CTX_TARGET` with the login.
 2. **Background** listens and sets up a context menu for “Add/Edit Note”.

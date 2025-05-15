@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { extractLogin, showTooltip, hideTooltip } from "../../content/utils";
+import { extractLogin, showTooltip, hideTooltip } from "@src/content/domUtils";
 
 beforeEach(() => {
   document.body.innerHTML = "";

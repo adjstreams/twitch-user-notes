@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import { USERNAME_SELECTORS } from "../../src/selectors.js";
+import { USERNAME_SELECTORS } from "../../src/content/selectors.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

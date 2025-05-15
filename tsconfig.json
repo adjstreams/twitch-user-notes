@@ -15,9 +15,15 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "allowSyntheticDefaultImports": true,
+      "baseUrl": ".",
+      "paths": {
+        "@src/*": ["src/*"],
+        "@tests/*": ["__tests__/*"],
+        "@dist/*": ["dist/*"],
+      },      
       "types": ["chrome", "vitest/globals"]
     },
-    "include": ["src/**/*.ts", "src/**/*.html", "src/**/*.test.ts"],
+    "include": ["src/**/*.ts", "src/**/*.html", "__tests__/**/*.ts"],
     "exclude": ["dist", "node_modules"]
   }
   

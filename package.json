@@ -10,10 +10,12 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "prepare": "husky",
     "smoketest": "tsx .github/smoketest/selector-check.ts",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "e2e": "playwright test",
+    "test": "vitest run --config vitest.config.mts",
+    "test:coverage": "vitest run --coverage --config vitest.config.mts",
+    "e2e:standalone": "playwright test __tests__/e2e/standalone",
+    "e2e:preview": "concurrently -k -s first -n VITE,TEST \"vite preview --no-open\" \"npm run e2e:preview:run\"",
+    "e2e:preview:run": "wait-on http://localhost:4173/options/options.html && playwright test __tests__/e2e/preview",
+    "e2e": "npm run e2e:standalone && npm run e2e:preview",
     "commit": "cz"
   },
   "author": "ADJStreams",
@@ -46,6 +48,7 @@
     "@typescript-eslint/parser": "^8.31.0",
     "@vitest/coverage-v8": "^3.1.2",
     "commitizen": "^4.3.1",
+    "concurrently": "^9.1.2",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^7.4.0",
     "eslint": "^9.25.1",
@@ -61,7 +64,9 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.2",
     "vite-plugin-static-copy": "^2.3.1",
-    "vitest": "^3.1.2"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.2",
+    "wait-on": "^8.0.3"
   },
   "config": {
     "commitizen": {

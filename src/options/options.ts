@@ -1,9 +1,6 @@
-import { render } from "./render";
-import { initApp, initDOMHandlers } from "./init";
+import { renderNotesTable } from "./renderNotesTable";
+import { initApp } from "./init";
 
-if (typeof document !== "undefined") {
-  initApp();
-  initDOMHandlers();
-}
+initApp();
 
-export { render };
+export { renderNotesTable };

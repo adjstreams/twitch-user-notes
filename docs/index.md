@@ -21,6 +21,7 @@ All data is stored locally in your browser and never leaves your machine.
 - [Tech Stack](stack.md)
 - [Testing Strategy](testing.md)
 - [Selector Smoketest](smoketest.md)
+- [Releasing](releasing.md)
 - [Privacy Policy](privacy.md)
 
 ---
@@ -29,4 +30,4 @@ All data is stored locally in your browser and never leaves your machine.
 
 Want to help out? PRs are welcome.
 
-→ [How to contribute](../CONTRIBUTING.md)
+→ [How to contribute]([Contributing Guide](https://github.com/adjstreams/twitch-user-notes/blob/main/CONTRIBUTING.md))
