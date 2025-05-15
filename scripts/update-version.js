@@ -2,16 +2,20 @@ import fs from 'fs';
 
 const version = process.argv[2];
 
-// Update manifest.json
-const manifestPath = './public/manifest.json';
-const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-manifest.version = version;
-fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+if (!version) {
+  console.error("Missing version argument");
+  process.exit(1);
+}
 
-// Update package.json
-const packagePath = './package.json';
-const pkg = JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
-pkg.version = version;
-fs.writeFileSync(packagePath, JSON.stringify(pkg, null, 2));
+const updateJsonVersion = (filePath) => {
+  if (!fs.existsSync(filePath)) return;
+  const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  json.version = version;
+  fs.writeFileSync(filePath, JSON.stringify(json, null, 2));
+  console.log(`Updated ${filePath} to version ${version}`);
+};
 
-console.log(`Updated manifest.json and package.json to version ${version}`);
+updateJsonVersion('./package.json');
+updateJsonVersion('./public/manifest.json');
+// Update the dist/manifest.json to keep it in sync with the public/manifest.json
+updateJsonVersion('./dist/manifest.json'); 
