@@ -30,4 +30,4 @@ All data is stored locally in your browser and never leaves your machine.
 
 Want to help out? PRs are welcome.
 
-→ [How to contribute]([Contributing Guide](https://github.com/adjstreams/twitch-user-notes/blob/main/CONTRIBUTING.md))
+→ [See Contributing Guide in GitHub Repo](https://github.com/adjstreams/twitch-user-notes/blob/main/CONTRIBUTING.md)
