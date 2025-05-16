@@ -21,6 +21,7 @@ All data is stored locally in your browser and never leaves your machine.
 - [Tech Stack](stack.md)
 - [Testing Strategy](testing.md)
 - [Selector Smoketest](smoketest.md)
+- [Selectors](selectors.md)
 - [Releasing](releasing.md)
 - [Privacy Policy](privacy.md)
 

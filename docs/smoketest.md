@@ -14,17 +14,17 @@ Twitch could change its UI. This extension uses a nightly smoketest to detect wh
 Each night, a GitHub Action opens:
 
 1. **Twitch homepage**  
-2. **A live channel's chat**
+2. **A live channel's chat and profile views**
 
-It checks whether expected Twitch DOM elements still exist — based on `src/selectors.ts`.
+It checks whether expected Twitch DOM elements still exist — based on the selector context definitions in [`selectorMetadata.ts`](./selectors.md).
 
 ---
 
 ## ✅ How It Works
 
 1. Playwright runs headless Chromium
-2. Selectors are loaded from `USERNAME_SELECTORS`
-3. Pages are visited and each selector is checked:
+2. Selectors are grouped by context (homepage, chat, profile, etc.)
+3. Pages are visited and each relevant selector is checked:
    - If it matched previously but now returns 0 → it is marked as dropped
 4. A diff is generated between current and last baseline
 5. If any selectors dropped from `true → false`, a GitHub Issue is opened
@@ -61,14 +61,19 @@ HEADLESS=false npm run smoketest
 
 This runs the smoketest visibly so you can inspect the DOM in a real browser window.
 
+---
+
 ## 🔔 When You’ll Get Notified
 
 If:
 
 - A selector previously matched
-
 - And now it doesn't
 
-- Then a GitHub issue will be opened (with full JSON diff)
+Then a GitHub issue will be opened (with full JSON diff)
 
 This helps catch Twitch UI updates before users do.
+
+---
+
+📘 For selector architecture, context definitions, and how to add new selectors, see the [Selectors documentation](selectors.md).
