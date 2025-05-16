@@ -1,15 +1,9 @@
-export const USERNAME_SELECTORS = [
-  // Chat messages
-  '[data-a-target="chat-message-username"]',
+import { SELECTOR_METADATA } from "./selectorMetadata.js";
 
-  // Browse / front-page cards
-  'a[data-a-target="preview-card-channel-link"]',
-
-  // Left rail – expanded
-  'a[data-test-selector="followed-channel"]',
-  'a[data-test-selector="recommended-channel"]',
-  '[data-a-target="side-nav-title"]',
-
-  // Left rail – collapsed
-  "a.side-nav-card.tw-link",
-] as const;
+/**
+ * A flattened list of all unique selectors across all contexts,
+ * exported for use by the Twitch extension runtime.
+ */
+export const USERNAME_SELECTORS: string[] = Array.from(
+  new Set(SELECTOR_METADATA.map((meta) => meta.selector)),
+);
