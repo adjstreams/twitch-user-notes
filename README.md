@@ -26,13 +26,15 @@ Because your follows list is full of forgotten raids and mystery streamers. This
 
 ## 🚀 Install
 
-> 🧪 The extension is currently in testing. Chrome Web Store listing coming soon.
+You can now install the extension directly from the Chrome Web Store:  
+👉 [**Twitch User Notes on Chrome Web Store**](https://chrome.google.com/webstore/detail/twitch-user-notes/kilabhmmhdoaeaipfjlnenphmgpfcijk)
 
-To install manually:
+
+To install manually (e.g. for testing specific versions):
 
 1. Download the latest release zip  
 2. Go to `chrome://extensions` and enable **Developer mode**  
-3. Click **Load unpacked**, then select the unzipped folder  
+3. Click **Load unpacked**, then select the unzipped folder
 
 ---
 
@@ -41,6 +43,8 @@ To install manually:
 This project uses TypeScript, Vitest, Playwright, and follows a modular, testable architecture.
 
 ### Quick Start
+
+Clone the repo, then:
 
 ```bash
 npm install     # Install dependencies
@@ -102,7 +106,7 @@ Nope. If you use multiple browsers or PCs, you’ll need to export and import ma
 
 ### I installed the extension, but don’t see anything?
 
-Make sure you’re logged into Twitch and refresh the tab. Then right click on usernames in chat or sidebars to add/edit a note. Your existing notes will show as tooltips.
+Make sure you’re on the Twitch website and refresh the tab. Then right click on usernames in chat or sidebars to add/edit a note. Your existing notes will show as tooltips.
 
 ---
 
@@ -121,7 +125,6 @@ Not yet. Want it? [Open an issue](https://github.com/adjstreams/twitch-user-note
 ## 🙋‍♀️ Questions / Feedback
 
 Open an issue or start a discussion in the repo.
-
 
 ## 👋 About the Author
 
