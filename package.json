@@ -62,7 +62,7 @@
     "semantic-release": "^24.2.3",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
-    "vite": "^6.3.2",
+    "vite": "^6.3.5",
     "vite-plugin-static-copy": "^2.3.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.2",
