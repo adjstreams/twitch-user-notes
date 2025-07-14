@@ -5,7 +5,7 @@
     "[data-a-target=\"side-nav-title\"]": true
   },
   "channelWatch": {
-    "[data-a-target=\"chat-message-username\"]": true,
+    "[data-a-target=\"chat-message-username\"]": false,
     ".channel-root--watch h1.tw-title": true
   },
   "channelHome": {
